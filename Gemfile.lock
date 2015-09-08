@@ -1,4 +1,5 @@
 GEM
+  remote: https://rubygems.org/
   specs:
     ansi (1.5.0)
     builder (3.2.2)
