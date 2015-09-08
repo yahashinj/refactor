@@ -1,21 +1,11 @@
 module Utilities
 	
-	def evaluate(x)
-		if x % 100 == 0
-			if x % 400 == 0
-				true
-			else
-				false
-			end
-		elsif x % 4 == 0
-			true
-		else
-			false
-		end
+	def leap_year?(year)
+		( div_by?(year, 100) && div_by?(year, 400) ) || ( div_by?(year, 4) && !div_by?(year, 100) ) 
 	end
 
-	def amount(a)
-		('%.1f' % ((a / 31536000.0) * 100)) + '%'
+	def percent_of_year(seconds)
+		('%.1f' % ((seconds / 31536000.0) * 100)) + '%'
 	end
 
 	def convert(x)
@@ -76,5 +66,11 @@ module Utilities
 
 		return ('%.1f' % (amount(c)[0..-2].to_f - amount(d)[0..-2].to_f)).to_s + '%'
 	end
+
+	# privite
+
+		def div_by?(n, m)
+			n % m == 0
+		end
 
 end
