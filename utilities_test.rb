@@ -12,5 +12,17 @@ class Methods2Test < MiniTest::Test
 	end
 
 	# Tests go here
+	def test_leap_year
+		assert_equal true, @m.leap_year?(0)
+		assert_equal false, @m.leap_year?(1997)
+		assert_equal true, @m.leap_year?(2000)
+		assert_equal false, @m.leap_year?(1900)
+		assert_equal false, @m.leap_year?(333)
+		assert_equal true, @m.leap_year?(16)
+	end
 
+	def test_percent_of_year
+		assert_equal '100%', @m.leap_year?(31536000.0)
+		assert_equal '50%', @m.leap_year?(15768000)
+	end
 end
