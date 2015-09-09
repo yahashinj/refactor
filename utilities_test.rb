@@ -31,4 +31,11 @@ class Methods2Test < MiniTest::Test
 		assert_equal "20:45", @m.military_time("8:45 pm")
 		assert_equal "12:45", @m.military_time("12:45 pm")
 	end
+
+	def test_standard_time
+		assert_equal "8:30 am", @m.standard_time("8:30")
+		assert_equal "8:30 pm", @m.standard_time("20:30")
+		assert_equal "12:00 am", @m.standard_time("0:00")
+		assert_equal "12:00 pm", @m.standard_time("12:00")
+	end
 end
