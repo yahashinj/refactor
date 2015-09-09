@@ -21,8 +21,14 @@ class Methods2Test < MiniTest::Test
 		assert_equal true, @m.leap_year?(16)
 	end
 
-	def test_percent_of_year
-		assert_equal '100%', @m.leap_year?(31536000.0)
-		assert_equal '50%', @m.leap_year?(15768000)
+	# def test_percent_of_year
+	# 	assert_equal '100%', @m.leap_year?(31536000.0)
+	# 	assert_equal '50%', @m.leap_year?(15768000)
+	# end
+
+	def test_military_time
+		assert_equal "0:30", @m.military_time("12:30 am")
+		assert_equal "20:45", @m.military_time("8:45 pm")
+		assert_equal "12:45", @m.military_time("12:45 pm")
 	end
 end
