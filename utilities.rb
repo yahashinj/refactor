@@ -25,17 +25,20 @@ module Utilities
 		return time = hour.to_s + ":" + min.to_s
 	end
 
-	def convert2(x)
-		a, b = x.split(":")
-		c = ""
-
-		if a.to_i < 12
-			c = a + b + " am"
+	def standard_time(time)
+		hour, minute = time.split(":")
+		hour = hour.to_i
+		if hour < 12
+			if hour == 0
+				hour = 12
+			end
+			am_pm = "am"
 		else
-			c = a + b + " pm"
+			hour = hour - 12
+			am_pm = "pm"
 		end
+		return hour.to_s + ":" + minute.to_s + " " + am_pm
 
-		return c
 	end
 
 	def okay(a, b)
