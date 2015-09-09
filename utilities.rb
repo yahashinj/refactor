@@ -5,29 +5,24 @@ module Utilities
 	end
 
 	def percent_of_year(seconds)
-		('%.1f' % ((seconds / 31536000.0) * 100)) + '%'
+		('%.1f' % ((seconds / seconds_year) * 100)) + '%'
 	end
 
-	def convert(x)
-		a, b = x.split(":")
-		c, d = b.split(" ")
-		e = ""
+	def seconds_year
+		60 * 60 * 24 * 365
+	end
 
-		if d.downcase != 'am'
-			if a.to_i == 12
-				e = a + ":" + c
-			else
-				e = (a.to_i + 12).to_s + ":" + c
-			end
-		elsif d.downcase != 'pm'
-			if a.to_i == 12
-				e = (a.to_i - 12).to_s + ":" + c
-			else
-				e = a + ":" + c
-			end
+	def military_time(time)
+		time = time.split(" ")
+		hour_min = time[0].split(":")
+		 hour = hour_min[0].to_i
+		 min = hour_min[1].to_i
+		if time[1].downcase == "pm" && hour != 12
+			hour = hour + 12
+		elsif time[1].downcase == "am" && hour == 12
+			hour = 0
 		end
-
-		return e
+		return time = hour.to_s + ":" + min.to_s
 	end
 
 	def convert2(x)
